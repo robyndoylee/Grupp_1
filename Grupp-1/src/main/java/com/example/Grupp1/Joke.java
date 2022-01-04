@@ -1,18 +1,20 @@
 package com.example.Grupp1;
 
 public class Joke {
+    Long id;
     String title;
     String category;
     String body;
     String author;
-    Long id;
 
-    public Joke(String title, String category, String body, String author, Long id) {
+
+    public Joke(Long id, String title, String category, String body, String author) {
+        this.id=id;
         this.title = title;
         this.category = category;
         this.body = body;
         this.author = author;
-        this.id=id;
+
     }
 
     public Joke(){

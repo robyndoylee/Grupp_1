@@ -27,8 +27,8 @@ public class Grupp1Controller {
     String start1 (Model model, @ModelAttribute Joke joke){
         repo.addJoke(joke);
         model.addAttribute("joke",joke);
-        return "view";
-        //länk till view jokes??
+        return "test2";
+
     }
 
     @GetMapping("/view")
@@ -37,6 +37,11 @@ public class Grupp1Controller {
         Joke joke = repo.getJoke(id);
         model.addAttribute("joke", joke);
         model.addAttribute("id", id);
+
+//        For pagination
+        model.addAttribute("showPrevious", id > 1);
+        model.addAttribute("currentPage", id);
+
         return "view";
     }
 

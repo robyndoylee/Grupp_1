@@ -12,12 +12,12 @@ public class Repo {
     public Repo() {
         jokes = new ArrayList<>();
 
-        jokes.add(new Joke("Title", "Family"," HEJ HEJ ROLIGT", "Lwam",1L));
-        jokes.add(new Joke("Title", "Adult"," HEJ HEJ ROLIGT", "Lwam",2L));
-        jokes.add(new Joke("Title", "General"," HEJ HEJ ROLIGT", "Lwam",3L));
-        jokes.add(new Joke("Title", "General"," HEJ HEJ ROLIGT", "Lwam",4L));
-        jokes.add(new Joke("Title", "Adult"," HEJ HEJ ROLIGT", "Lwam",5L));
-        jokes.add(new Joke("Title", "Family"," HEJ HEJ ROLIGT", "Lwam",6L));
+        jokes.add(new Joke(1L, "Title", "Family"," HEJ HEJ ROLIGT", "Lwam"));
+        jokes.add(new Joke(2L, "Title", "Adult"," HEJ HEJ ROLIGT", "Lwam"));
+        jokes.add(new Joke(3L, "Title", "General"," HEJ HEJ ROLIGT", "Lwam"));
+        jokes.add(new Joke(4L, "Title", "General"," HEJ HEJ ROLIGT", "Lwam"));
+        jokes.add(new Joke(5L, "Title", "Adult"," HEJ HEJ ROLIGT", "Lwam"));
+        jokes.add(new Joke(6L, "Title", "Family"," HEJ HEJ ROLIGT", "Lwam"));
 
         }
 
