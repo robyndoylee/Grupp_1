@@ -5,6 +5,8 @@
     <title>Title</title>
 </head>
 <body>
+
+<h1> Enter your joke </h1>
 <form action="/" method="post" th:object="${Joke}">
 
     <p>Title: <input type="text" th:field="*{title}"></p>
@@ -15,7 +17,7 @@
             <option value="General">General</option>
         </select>
     </p>
-    <p>Joke: <input type="" th:field="*{body}"></p>
+    <p>Joke: <textarea name="body" th:field="*{body}" rows="4" cols="20"></textarea></p>
     <p>Author: <input type="" th:field="*{author}"></p>
     <input type="submit" value="Submit">
 
