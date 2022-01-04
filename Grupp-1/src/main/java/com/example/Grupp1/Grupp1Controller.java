@@ -27,8 +27,8 @@ public class Grupp1Controller {
     String start1 (Model model, @ModelAttribute Joke joke){
         repo.addJoke(joke);
         model.addAttribute("joke",joke);
-        return "view";
-        //länk till view jokes??
+        return "test2";
+
     }
 
     @GetMapping("/view")
