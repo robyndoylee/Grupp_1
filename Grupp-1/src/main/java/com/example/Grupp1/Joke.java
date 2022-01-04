@@ -3,16 +3,21 @@ package com.example.Grupp1;
 public class Joke {
     Long id;
     String title;
-    Enum CATEGORY;
+    String category;
     String body;
     String author;
 
-    public Joke(Long id, String title, Enum CATEGORY, String body, String author) {
+
+    public Joke(Long id, String title, String category, String body, String author) {
         this.id=id;
         this.title = title;
-        this.CATEGORY = CATEGORY;
+        this.category = category;
         this.body = body;
         this.author = author;
+
+    }
+
+    public Joke(){
     }
 
     public String getTitle() {
@@ -23,12 +28,12 @@ public class Joke {
         this.title = title;
     }
 
-    public Enum getCATEGORY() {
-        return CATEGORY;
+    public String getCategory() {
+        return category;
     }
 
-    public void setCATEGORY(Enum CATEGORY) {
-        this.CATEGORY = CATEGORY;
+    public void setCategory(String category) {
+        this.category = category;
     }
 
     public String getBody() {
