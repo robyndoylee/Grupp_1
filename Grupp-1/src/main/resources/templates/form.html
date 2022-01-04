@@ -9,7 +9,7 @@
 <h1> Enter your joke </h1>
 <form action="/add" method="post" th:object="${joke}">
 
-    <p>Title: <input type="text" th:field="*{title}"></p>
+    <p>Title: <input type="text" th:field="*{title}">
     <p>Category:
         <select th:field="*{CATEGORY}">
             <option value="Family">Family</option>
