@@ -28,6 +28,7 @@ public class Grupp1Controller {
         repo.addJoke(joke);
         model.addAttribute("joke",joke);
         return "view";
+        //länk till view jokes??
     }
 
     @GetMapping("/view")
