@@ -36,4 +36,10 @@ public class Repo {
         jokes.add(joke);
         return joke;
     }
+
+    public int numberOfJokes() {
+
+        return jokes.size();
+    }
+
 }

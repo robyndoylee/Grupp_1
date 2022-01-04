@@ -21,19 +21,29 @@
             <p th:text="'Author : ' + ${joke.author}"> </p>
             <p th:text="'ID : ' + ${joke.id}"> </p>
             <p th:text="'Current page : ' + ${currentPage}"> </p>
+            <p th:text="'Number of jokes : ' + ${numberOfJokes}"> </p>
 
             <nav aria-label="Page navigation example">
                 <ul class="pagination">
                     <li th:if="${showPrevious}" class="page-item"><a class="page-link" th:href="'/view?id=' + ${currentPage-1}">Previous</a></li>
-                    <li class="page-item"><a class="page-link" href="#">1</a></li>
-                    <li class="page-item"><a class="page-link" href="#">2</a></li>
-                    <li class="page-item"><a class="page-link" href="#">3</a></li>
-                    <li class="page-item"><a class="page-link" href="#">5</a></li>
-                    <li class="page-item"><a class="page-link" href="#">6</a></li>
-                    <li class="page-item"><a class="page-link" href="#">7</a></li>
-                    <li class="page-item"><a class="page-link" href="#">8</a></li>
-                    <li class="page-item"><a class="page-link" href="#">9</a></li>
-                    <li class="page-item"><a class="page-link" href="#">Next</a></li>
+
+                    <span th:each="element : ${elements}">
+                        <li class="page-item"><a class="page-link" th:href="'/view?id=' + ${element}" th:text="${element}"></a></li>
+                    </span>
+
+                    <span th:if="${showNext}">
+                      <li class="page-item"><a class="page-link" th:href="'/view?id=' + ${currentPage+1}" th:text="'Next joke'"></a></li>
+                    </span>
+
+
+<!--                    <li class="page-item"><a class="page-link" href="#">2</a></li>-->
+<!--                    <li class="page-item"><a class="page-link" href="#">3</a></li>-->
+<!--                    <li class="page-item"><a class="page-link" href="#">5</a></li>-->
+<!--                    <li class="page-item"><a class="page-link" href="#">6</a></li>-->
+<!--                    <li class="page-item"><a class="page-link" href="#">7</a></li>-->
+<!--                    <li class="page-item"><a class="page-link" href="#">8</a></li>-->
+<!--                    <li class="page-item"><a class="page-link" href="#">9</a></li>-->
+<!--                    <li class="page-item"><a class="page-link" href="#">Next</a></li>-->
                 </ul>
             </nav>
 
