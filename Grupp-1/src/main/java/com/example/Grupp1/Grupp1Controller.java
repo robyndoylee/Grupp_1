@@ -32,7 +32,7 @@ public class Grupp1Controller {
     }
 
     @GetMapping("/view")
-    String start4(Model model, @RequestParam(required = false, defaultValue = "1") Long id) {
+    String start4(Model model, @RequestParam(required = false, defaultValue = "1") int id) {
 
         Joke joke = repo.getJoke(id);
         model.addAttribute("joke", joke);
