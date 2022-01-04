@@ -28,4 +28,11 @@ public class Repo {
         }
         return null;
     }
+
+    public Joke addJoke(Joke joke) {
+        Joke lastJoke = jokes.get(jokes.size()-1);
+        joke.setId(lastJoke.getId()+1);
+        jokes.add(joke);
+        return joke;
+    }
 }
