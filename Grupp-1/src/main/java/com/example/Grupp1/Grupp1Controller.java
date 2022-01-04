@@ -3,10 +3,7 @@ package com.example.Grupp1;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 public class Grupp1Controller {
@@ -22,9 +19,8 @@ public class Grupp1Controller {
 
     @PostMapping("/add")
     String start1 (Model model, Joke joke){
-
         model.addAttribute("joke",joke);
-    return "view";
+        return "view";
     }
 
     @GetMapping("/add")
@@ -32,8 +28,8 @@ public class Grupp1Controller {
         return "form";
     }
 
-    @GetMapping("/view/{id}")
-    String start4(Model model, @PathVariable Long id) {
+    @GetMapping("/view")
+    String start4(Model model, @RequestParam(required = false, defaultValue = "1") Long id) {
 
         Joke joke = repo.getJoke(id);
         model.addAttribute("joke", joke);
