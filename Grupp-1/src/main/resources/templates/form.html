@@ -9,17 +9,17 @@
 <h1> Enter your joke </h1>
 <form action="/add" th:object="${joke}" method="POST">
 
-    <p>Title: <input type="text" th:field="*{title}"/></p>
+    <p>Title:</p> <input type="text" th:field="*{title}"/><br><br>
     Category:
-    <select th:field="*{category}">
+    <select name="jokes" id="jokes" th:field="*{category}">
         <option value="Family">Family</option>
         <option value="Adult">Adult</option>
         <option value="General">General</option>
     </select>
 
 
-    <p>Joke: <textarea name="body" th:field="*{body}" rows="4" cols="20"></textarea></p>
-    <p>Author: <input type="text" th:field="*{author}"/></p>
+    <p>Joke:</p> <textarea name="body" th:field="*{body}" rows="4" cols="20"></textarea>
+    <p>Author: </p><input type="text" th:field="*{author}"/><br><br>
     <input type="submit" value="Submit">
 
 </form>
