@@ -12,8 +12,6 @@ public class Repo {
     public Repo() {
         jokes = new ArrayList<>();
 
-
-
         jokes.add(new Joke("Title", "Family"," HEJ HEJ ROLIGT", "Lwam",1L));
         jokes.add(new Joke("Title", "Adult"," HEJ HEJ ROLIGT", "Lwam",2L));
         jokes.add(new Joke("Title", "General"," HEJ HEJ ROLIGT", "Lwam",3L));
