@@ -1,16 +1,57 @@
 package com.example.Grupp1;
 
 public class Joke {
-    String body;
-    Enum CATEGORY;
     String title;
+    Enum CATEGORY;
+    String body;
     String author;
+    Long id;
 
-    public Joke(String body, Enum CATEGORY, String title, String author) {
-        this.body = body;
-        this.CATEGORY = CATEGORY;
+    public Joke(String title, Enum CATEGORY, String body, String author, Long id) {
         this.title = title;
+        this.CATEGORY = CATEGORY;
+        this.body = body;
+        this.author = author;
+        this.id=id;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public Enum getCATEGORY() {
+        return CATEGORY;
+    }
+
+    public void setCATEGORY(Enum CATEGORY) {
+        this.CATEGORY = CATEGORY;
+    }
+
+    public String getBody() {
+        return body;
+    }
+
+    public void setBody(String body) {
+        this.body = body;
+    }
+
+    public String getAuthor() {
+        return author;
+    }
+
+    public void setAuthor(String author) {
         this.author = author;
     }
 
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 }
