@@ -17,16 +17,17 @@ public class Grupp1Controller {
     }
 
 
-    @PostMapping("/add")
-    String start1 (Model model, Joke joke){
-        model.addAttribute("joke",joke);
-        return "view";
+    @GetMapping("/add")
+    String start3(Model model) {
+        model.addAttribute("joke", new Joke());
+        return "form";
     }
 
-    @GetMapping("/add")
-    String start3(Model model, Joke joke) {
-        model.addAttribute("joke", joke);
-        return "form";
+    @PostMapping("/add")
+    String start1 (Model model, @ModelAttribute Joke joke){
+        repo.addJoke(joke);
+        model.addAttribute("joke",joke);
+        return "view";
     }
 
     @GetMapping("/view")

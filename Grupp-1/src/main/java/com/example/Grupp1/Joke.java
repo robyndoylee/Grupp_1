@@ -15,6 +15,9 @@ public class Joke {
         this.id=id;
     }
 
+    public Joke(){
+    }
+
     public String getTitle() {
         return title;
     }
