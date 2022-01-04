@@ -15,12 +15,13 @@ public class Repo {
 
 
         jokes.add(new Joke("Title", "Family"," HEJ HEJ ROLIGT", "Lwam",1L));
-        jokes.add(new Joke("New title", "General","", "Robyn",2L));
-        jokes.add(new Joke("Some title", "Adult","", "",3L));
-        jokes.add(new Joke("Hello this is my title", "General","", "",4L));
-        jokes.add(new Joke("No title", "General","", "",5L));
-        jokes.add(new Joke("  1  1   2", "Adult","", "",6L));
-        jokes.add(new Joke("YES!", "Adult","", "",7L));
+        jokes.add(new Joke("Title", "Adult"," HEJ HEJ ROLIGT", "Lwam",2L));
+        jokes.add(new Joke("Title", "General"," HEJ HEJ ROLIGT", "Lwam",3L));
+        jokes.add(new Joke("Title", "General"," HEJ HEJ ROLIGT", "Lwam",4L));
+        jokes.add(new Joke("Title", "Adult"," HEJ HEJ ROLIGT", "Lwam",5L));
+        jokes.add(new Joke("Title", "Family"," HEJ HEJ ROLIGT", "Lwam",6L));
+
+        }
 
     public Joke getJoke(Long id) {
         for (Joke joke : jokes) {
