@@ -2,14 +2,14 @@ package com.example.Grupp1;
 
 public class Joke {
     String title;
-    Enum CATEGORY;
+    String category;
     String body;
     String author;
     Long id;
 
-    public Joke(String title, Enum CATEGORY, String body, String author, Long id) {
+    public Joke(String title, String category, String body, String author, Long id) {
         this.title = title;
-        this.CATEGORY = CATEGORY;
+        this.category = category;
         this.body = body;
         this.author = author;
         this.id=id;
@@ -23,12 +23,12 @@ public class Joke {
         this.title = title;
     }
 
-    public Enum getCATEGORY() {
-        return CATEGORY;
+    public String getCategory() {
+        return category;
     }
 
-    public void setCATEGORY(Enum CATEGORY) {
-        this.CATEGORY = CATEGORY;
+    public void setCategory(String category) {
+        this.category = category;
     }
 
     public String getBody() {

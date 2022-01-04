@@ -14,7 +14,7 @@ public class Repo {
 
 
 
-        jokes.add(new Joke("Title", CATEGORY.FAMILY," HEJ HEJ ROLIGT", "Lwam",1L));
+        jokes.add(new Joke("Title", "Family"," HEJ HEJ ROLIGT", "Lwam",1L));
 //            for (int i = 1; i <= 9; i++) {
 //                jokes.add(new Joke(new String("Title"+i), "Book Title " + i, "Author name " + i, 40 + i));
 //            }

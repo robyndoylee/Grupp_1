@@ -24,7 +24,8 @@ public class Grupp1Controller {
     }
 
     @GetMapping("/add")
-    String start3(Model model) {
+    String start3(Model model, Joke joke) {
+        model.addAttribute("joke", joke);
         return "form";
     }
 
