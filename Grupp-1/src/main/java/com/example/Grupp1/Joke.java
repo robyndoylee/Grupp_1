@@ -1,18 +1,18 @@
 package com.example.Grupp1;
 
 public class Joke {
+    Long id;
     String title;
     Enum CATEGORY;
     String body;
     String author;
-    Long id;
 
-    public Joke(String title, Enum CATEGORY, String body, String author, Long id) {
+    public Joke(Long id, String title, Enum CATEGORY, String body, String author) {
+        this.id=id;
         this.title = title;
         this.CATEGORY = CATEGORY;
         this.body = body;
         this.author = author;
-        this.id=id;
     }
 
     public String getTitle() {

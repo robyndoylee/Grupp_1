@@ -34,6 +34,11 @@ public class Grupp1Controller {
         Joke joke = repo.getJoke(id);
         model.addAttribute("joke", joke);
         model.addAttribute("id", id);
+
+//        For pagination
+        model.addAttribute("showPrevious", id > 1);
+        model.addAttribute("currentPage", id);
+
         return "view";
     }
 
