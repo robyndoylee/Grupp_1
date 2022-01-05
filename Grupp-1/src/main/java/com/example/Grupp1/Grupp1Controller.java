@@ -13,6 +13,7 @@ public class Grupp1Controller {
 
     @GetMapping("/")
     String start(Model model) {
+        model.addAttribute("random", repo.randomJoke());
         return "start";
     }
 
@@ -36,16 +37,17 @@ public class Grupp1Controller {
 
         Joke joke = repo.getJoke(id);
         int numberOfJokes = repo.numberOfJokes();
-        int paginationLength = Math.min(numberOfJokes, 10);
+        int paginationLength = Math.min(numberOfJokes, 9);
         int[] paginationElements = pagArray(paginationLength, id);
 
 
         model.addAttribute("joke", joke);
         model.addAttribute("id", id);
+        model.addAttribute("random", repo.randomJoke());
 
 //        For pagination
         model.addAttribute("showPrevious", id > 1);
-        model.addAttribute("currentPage", id);
+//        model.addAttribute("currentJoke", id);  //ta bort?
         model.addAttribute("numberOfJokes", numberOfJokes);
         model.addAttribute("elements", paginationElements);
         model.addAttribute("showNext", numberOfJokes > id);
@@ -55,10 +57,17 @@ public class Grupp1Controller {
     }
 
     private int[] pagArray(int length, int id) {
-        int start = Math.max(1, id - 5);          // aktiv länk/sida skall vara i mitten av pagination (plats 5 av 10)
 
+        int start = Math.max(1, id - 5);
+
+
+        if (repo.numberOfJokes()-id < 5) {    // Lägg inte till länkar om aktiv länk är närmare än 5 ifrån sista ID
+            start = repo.numberOfJokes()-8;
+        }
 
         int[] array = new int[length];
+                  // aktiv länk/sida skall vara i mitten av pagination (plats 5 av 10)
+
         for (int i = 0; i < length; i++) {
             array[i] = start;
             start++;

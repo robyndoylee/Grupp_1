@@ -17,22 +17,21 @@
         <div class="col-lg-6">
             <h1 class="display-5 fw-bold lh-1 mb-3" th:text="${joke.title}"></h1>
             <p th:text="'Category : ' + ${joke.category}"> </p>
-            <p th:text="${joke.body}"> </p>
+            <p style="white-space: pre-line" th:text="${joke.body}"> </p>
             <p th:text="'Author : ' + ${joke.author}"> </p>
-            <p th:text="'ID : ' + ${joke.id}"> </p>
-            <p th:text="'Current page : ' + ${currentPage}"> </p>
-            <p th:text="'Number of jokes : ' + ${numberOfJokes}"> </p>
+
 
             <nav aria-label="Page navigation example">
                 <ul class="pagination">
-                    <li th:if="${showPrevious}" class="page-item"><a class="page-link" th:href="'/view?id=' + ${currentPage-1}">Previous</a></li>
+                    <li th:if="${showPrevious}" class="page-item"><a class="page-link" th:href="'/view?id=' + ${id-1}">Previous</a></li>
 
                     <span th:each="element : ${elements}">
-                        <li class="page-item"><a class="page-link" th:href="'/view?id=' + ${element}" th:text="${element}"></a></li>
+                        <li th:if="${id == element}" class="page-item active "><a class="page-link" th:text="${element}"></a></li>
+                        <li th:if="${id != element}" class="page-item"><a class="page-link" th:href="'/view?id=' + ${element}" th:text="${element}"></a></li>
                     </span>
 
                     <span th:if="${showNext}">
-                      <li class="page-item"><a class="page-link" th:href="'/view?id=' + ${currentPage+1}" th:text="'Next joke'"></a></li>
+                      <li class="page-item"><a class="page-link" th:href="'/view?id=' + ${id+1}" th:text="'Next joke'"></a></li>
                     </span>
 
 
@@ -49,7 +48,7 @@
 
 
             <div class="d-grid gap-2 d-md-flex justify-content-md-start">
-                <a class="btn btn-primary btn-lg px-4 me-md-2" href="/view">View Jokes</a>
+                <a class="btn btn-primary btn-lg px-4 me-md-2" th:href="'/view?id=' + ${random}">Random Joke</a>
                 <a class="btn btn-outline-secondary btn-lg px-4" href="/add">Add joke</a>
             </div>
         </div>
