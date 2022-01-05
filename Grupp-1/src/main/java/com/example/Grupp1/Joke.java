@@ -1,14 +1,14 @@
 package com.example.Grupp1;
 
 public class Joke {
-    Long id;
+    int id;
     String title;
     String category;
     String body;
     String author;
 
 
-    public Joke(Long id, String title, String category, String body, String author) {
+    public Joke(int id, String title, String category, String body, String author) {
         this.id=id;
         this.title = title;
         this.category = category;
@@ -52,11 +52,11 @@ public class Joke {
         this.author = author;
     }
 
-    public Long getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(int id) {
         this.id = id;
     }
 }

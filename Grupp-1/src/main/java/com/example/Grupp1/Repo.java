@@ -12,18 +12,18 @@ public class Repo {
     public Repo() {
         jokes = new ArrayList<>();
 
-        jokes.add(new Joke(1L, "Title", "Family"," HEJ HEJ ROLIGT", "Lwam"));
-        jokes.add(new Joke(2L, "Title", "Adult"," HEJ HEJ ROLIGT", "Lwam"));
-        jokes.add(new Joke(3L, "Title", "General"," HEJ HEJ ROLIGT", "Lwam"));
-        jokes.add(new Joke(4L, "Title", "General"," HEJ HEJ ROLIGT", "Lwam"));
-        jokes.add(new Joke(5L, "Title", "Adult"," HEJ HEJ ROLIGT", "Lwam"));
-        jokes.add(new Joke(6L, "Title", "Family"," HEJ HEJ ROLIGT", "Lwam"));
+        jokes.add(new Joke(1, "Title", "Family"," HEJ HEJ ROLIGT", "Lwam"));
+        jokes.add(new Joke(2, "Title", "Adult"," HEJ HEJ ROLIGT", "Lwam"));
+        jokes.add(new Joke(3, "Title", "General"," HEJ HEJ ROLIGT", "Lwam"));
+        jokes.add(new Joke(4, "Title", "General"," HEJ HEJ ROLIGT", "Lwam"));
+        jokes.add(new Joke(5, "Title", "Adult"," HEJ HEJ ROLIGT", "Lwam"));
+        jokes.add(new Joke(6, "Title", "Family"," HEJ HEJ ROLIGT", "Lwam"));
 
         }
 
-    public Joke getJoke(Long id) {
+    public Joke getJoke(int id) {
         for (Joke joke : jokes) {
-            if (joke.getId().equals(id)) {
+            if (joke.getId()==(id)) {
                 return joke;
             }
         }
