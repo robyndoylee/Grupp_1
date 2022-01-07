@@ -22,5 +22,14 @@ class Grupp1ApplicationTests {
 		Joke joke = new Joke(10, "Title", "Family"," HEJ HEJ ROLIGT", "Lwam");
 		Assertions.assertEquals("Title", joke.getTitle());
 	}
+	@Test
+	void testrat(){
+		Joke joke = new Joke(10, "Title", "Family"," HEJ HEJ ROLIGT", "Lwam");
+		joke.addRating(4);
+		joke.addRating(3);
+		joke.addRating(5);
+		Assertions.assertEquals(4, joke.averageRating());
+
+	}
 
 }
