@@ -16,11 +16,21 @@ class Grupp1ApplicationTests {
 		Joke joke = new Joke(10, "Title", "Family", "Hej hej ", "Lwam");
 		Assertions.assertEquals(10, joke.getId());
 	}
+	
 
 	@Test
 	void test(){
 		Joke joke = new Joke(10, "Title", "Family"," HEJ HEJ ROLIGT", "Lwam");
 		Assertions.assertEquals("Title", joke.getTitle());
+	}
+	@Test
+	void testrat(){
+		Joke joke = new Joke(10, "Title", "Family"," HEJ HEJ ROLIGT", "Lwam");
+		joke.addRating(new Rate(4));
+		joke.addRating(new Rate(5));
+		joke.addRating(new Rate(8));
+		Assertions.assertEquals(4, joke.averageRating());
+
 	}
 
 }
