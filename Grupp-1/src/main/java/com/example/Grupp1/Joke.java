@@ -9,7 +9,7 @@ public class Joke {
     private String category;
     private String body;
     private String author;
-    private ArrayList<Integer> rating;
+    private ArrayList<Rate> rating;
 
     public Joke(int id, String title, String category, String body, String author) {
         this.id=id;
@@ -20,15 +20,15 @@ public class Joke {
         this.rating = new ArrayList<>();
 
     }
-    public void addRating(int rate){
+    public void addRating(Rate rate){
         this.rating.add(rate);
     }
 
     public int averageRating(){
         int sum =0;
         int count =0;
-        for (int rate : rating ) {
-        sum = sum + rate;
+        for (Rate rate : rating ) {
+        sum = sum + rate.getRating();
         count++;
         }
         int average = sum/count;

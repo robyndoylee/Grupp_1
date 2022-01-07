@@ -27,6 +27,14 @@ public class Grupp1Controller {
         return "form";
     }
 
+    @PostMapping ("/addRating")
+    String start123 (@ModelAttribute int rate , @ModelAttribute int jokeID, Model model){
+       repo.getJoke(jokeID).addRating(new Rate(rate));
+        model.addAttribute("rate",rate);
+        System.out.println(rate);
+        return "view";
+    }
+
     @PostMapping("/add")
     String start1 (Model model, @ModelAttribute Joke joke, BindingResult result){
            repo.addJoke(joke);
