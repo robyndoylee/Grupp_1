@@ -1,5 +1,8 @@
 package com.example.Grupp1;
 
+
+
+
 public class Joke {
     int id;
     String title;

@@ -3,7 +3,10 @@ package com.example.Grupp1;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+
+import javax.naming.Binding;
 
 @Controller
 public class Grupp1Controller {
@@ -25,9 +28,29 @@ public class Grupp1Controller {
     }
 
     @PostMapping("/add")
-    String start1(Model model, @ModelAttribute Joke joke) {
-        repo.addJoke(joke);
-        model.addAttribute("joke", joke);
+    String start1 (Model model, @ModelAttribute Joke joke, BindingResult result){
+           repo.addJoke(joke);
+        model.addAttribute("joke",joke);
+        if (joke.getBody() == null || joke.getBody().equals("")) {
+            result.rejectValue("body", "body.empty");
+
+
+            return "form";
+        }
+        else if ( joke.getAuthor().equals("")  ) {
+
+            result.rejectValue("author", "author.empty");
+
+
+            return "form";
+        }
+        else if (joke.getTitle().equals(""))  {
+
+            result.rejectValue("title", "title.empty");
+
+            return "form";
+        }
+
         return "test2";
 
     }
