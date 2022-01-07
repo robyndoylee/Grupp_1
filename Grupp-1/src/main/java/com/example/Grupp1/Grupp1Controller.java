@@ -33,6 +33,21 @@ public class Grupp1Controller {
         model.addAttribute("joke",joke);
         if (joke.getBody() == null || joke.getBody().equals("")) {
             result.rejectValue("body", "body.empty");
+
+
+            return "form";
+        }
+        else if ( joke.getAuthor().equals("")  ) {
+
+            result.rejectValue("author", "author.empty");
+
+
+            return "form";
+        }
+        else if (joke.getTitle().equals(""))  {
+
+            result.rejectValue("title", "title.empty");
+
             return "form";
         }
 

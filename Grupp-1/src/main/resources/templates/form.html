@@ -14,13 +14,17 @@
 
 </head>
 <body>
-<div>
+<div class="container-sm">
 <h1> Enter your joke </h1>
 
 <form action="/add" th:object="${joke}" method="POST">
 
-    <p>Title:</p> <input type="text" th:field="*{title}"/><br><br>
-    Select Category:
+
+    <p>Title:</p><input type="text" th:field="*{title}" class="test" th:errorclass="error" size="37"/><br><br>
+    <p th:if="${#fields.hasErrors('title')}">No title!!!</p>
+
+    <div class="col-md-4">
+    Select Category:<br><br>
     <select class="form-select" aria-label="Default select example" name="jokes" id="jokes" th:field="*{category}">
 
         <option value="Family">Family</option>
@@ -28,13 +32,17 @@
         <option value="Dark">Dark</option>
 
     </select>
+    </div><br>
 
 
-    <p>Joke:</p> <textarea name="body" th:field="*{body}" rows="4" cols="20" class="test" th:errorclass="error"></textarea>
-    <p th:if="${#fields.hasErrors('body')}">Bad Joke!!!</p>
-    <p>Author: </p><input type="text" th:field="*{author}"/><br><br>
-    <input class="btn btn-primary" type="submit" value="Submit">
+    <p>Joke:</p> <textarea name="body" th:field="*{body}" rows="4" cols="39" class="test" th:errorclass="error"></textarea>
+    <p th:if="${#fields.hasErrors('body')}">Bad Joke!!!</p><br><br>
+    <p>Author: </p><input type="text" th:field="*{author}" class="test" th:errorclass="error" size="37"/><br><br>
+    <p th:if="${#fields.hasErrors('author')}">No author!!!</p>
+    <input class="btn btn-primary btn-lg px-4 me-md-2" type="submit" value="Submit">
+    <a class="btn btn-outline-secondary btn-lg px-4" href="/view">Return to jokes</a>
 </form>
+
 </div>
 </body>
 </html>
