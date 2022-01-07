@@ -19,7 +19,6 @@
 
 <form action="/add" th:object="${joke}" method="POST">
 
-
     <p>Title:</p><input type="text" th:field="*{title}" class="test" th:errorclass="error" size="37"/><br><br>
     <p th:if="${#fields.hasErrors('title')}">No title!!!</p>
 
