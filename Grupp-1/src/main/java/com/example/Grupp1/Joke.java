@@ -24,15 +24,18 @@ public class Joke {
         this.rating.add(rate);
     }
 
-    public int averageRating(){
+    public double averageRating(){
         int sum =0;
         int count =0;
         for (Rate rate : rating ) {
         sum = sum + rate.getRating();
         count++;
         }
-        int average = sum/count;
-        return average;
+        if (count != 0) {
+
+            return (double)sum / count;
+        }
+        return 0;
     }
 
     public Joke(){

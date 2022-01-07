@@ -65,6 +65,7 @@ public class Grupp1Controller {
         session.getAttribute("admin");
 
         Joke joke = repo.getJoke(id);
+
         int numberOfJokes = repo.numberOfJokes();
         int paginationLength = Math.min(numberOfJokes, 9);
         int[] paginationElements = pagArray(paginationLength, id);
@@ -73,6 +74,7 @@ public class Grupp1Controller {
         model.addAttribute("joke", joke);
         model.addAttribute("id", id);
         model.addAttribute("random", repo.randomJoke());
+        model.addAttribute("averageRating", joke.averageRating());
 
 //        For pagination
         model.addAttribute("showPrevious", id > 1);
