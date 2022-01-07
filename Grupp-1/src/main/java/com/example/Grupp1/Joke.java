@@ -1,15 +1,15 @@
 package com.example.Grupp1;
 
 
-
+import java.util.ArrayList;
 
 public class Joke {
-    int id;
-    String title;
-    String category;
-    String body;
-    String author;
-
+    private int id;
+    private String title;
+    private String category;
+    private String body;
+    private String author;
+    private ArrayList<Integer> rating;
 
     public Joke(int id, String title, String category, String body, String author) {
         this.id=id;
@@ -17,7 +17,22 @@ public class Joke {
         this.category = category;
         this.body = body;
         this.author = author;
+        this.rating = new ArrayList<>();
 
+    }
+    public void addRating(int rate){
+        this.rating.add(rate);
+    }
+
+    public int averageRating(){
+        int sum =0;
+        int count =0;
+        for (int rate : rating ) {
+        sum = sum + rate;
+        count++;
+        }
+        int average = sum/count;
+        return average;
     }
 
     public Joke(){

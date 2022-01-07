@@ -3,6 +3,13 @@
     border-color: red;
     }
 
+body {
+	background: #ebefff;
+}
+.checked {
+  color: orange;
+}
+
     div.stars {
       width: 270px;
       display: inline-block;
