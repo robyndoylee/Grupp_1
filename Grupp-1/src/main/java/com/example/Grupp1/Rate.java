@@ -6,9 +6,9 @@ public class Rate {
     public Rate(int rating) {
         this.rating = rating;
     }
-    public Rate() {
-
-    }
+//    public Rate() {
+//
+//    }
 
     public int getRating() {
         return rating;

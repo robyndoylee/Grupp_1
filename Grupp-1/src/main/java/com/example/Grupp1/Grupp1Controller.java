@@ -31,11 +31,13 @@ public class Grupp1Controller {
     }
 
     @PostMapping ("/addRating")
-    String start123 (@ModelAttribute int rate , @ModelAttribute int jokeID, Model model){
-       repo.getJoke(jokeID).addRating(new Rate(rate));
+    String start123 (@RequestParam int rate , @RequestParam int id, Model model){
         model.addAttribute("rate",rate);
+        Joke joke = repo.getJoke(id);
+        joke.addRating(new Rate(rate));
         System.out.println(rate);
-        return "view";
+        System.out.println(joke.averageRating());
+        return "redirect:/view?id=" +id;
     }
 
     @PostMapping("/add")
