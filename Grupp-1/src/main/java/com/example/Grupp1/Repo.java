@@ -98,6 +98,8 @@ public class Repo {
                 ps.setInt(1, id);
                 ps.setInt(2, rating);
                 ps.executeUpdate();
+                System.out.println(id);
+                System.out.println(rating);
             } catch (SQLException e) {
                 e.printStackTrace();
             }

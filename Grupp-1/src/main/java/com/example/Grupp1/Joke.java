@@ -8,23 +8,26 @@ import java.util.ArrayList;
 
 
 public class Joke {
-    private Integer id;
+    private int id;
     private String title;
     private String category;
     private String body;
     private String author;
 
-
-    public Joke(Integer id, String title, String category, String body, String author) {
-        this.id=id;
+    public Joke(int id, String title, String category, String body, String author) {
+        this.id = id;
         this.title = title;
         this.category = category;
         this.body = body;
         this.author = author;
     }
 
-
-
+    public Joke(String title, String category, String body, String author) {
+        this.title = title;
+        this.category = category;
+        this.body = body;
+        this.author = author;
+    }
 
     public Joke(){
     }
@@ -65,7 +68,5 @@ public class Joke {
         return id;
     }
 
-    public void setId(int id) {
-        this.id = id;
-    }
+
 }

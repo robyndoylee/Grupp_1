@@ -37,7 +37,7 @@ public class Grupp1Controller {
     String start123(@RequestParam int rate, @RequestParam int id, Model model) {
         model.addAttribute("rate", rate);
         Joke joke = repo.getJoke(id);
-        repo.addRating(rate, id);
+        repo.addRating(id, rate);
         return "redirect:/view?id=" + id;
     }
 
@@ -75,7 +75,7 @@ public class Grupp1Controller {
         model.addAttribute("joke", joke);
         model.addAttribute("id", id);
         model.addAttribute("random", JokeService.randomJoke());
-//        model.addAttribute("averageRating", repo.averageRating());
+        model.addAttribute("averageRating", repo.averageRating(id));
 
 //        For pagination
         model.addAttribute("showPrevious", id > 1);
