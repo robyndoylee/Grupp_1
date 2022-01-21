@@ -2,7 +2,6 @@ package com.example.Grupp1;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
-import org.springframework.stereotype.Service;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -42,20 +41,20 @@ public class Repo {
             ResultSet rs = ps.executeQuery();
 
             if (rs.next()) {
-                return rsBook(rs);
+                return rsJoke(rs);
             }
         } catch (SQLException e) {
             e.printStackTrace();
         }
         return null;
     }
-
-    public Joke addJoke(Joke joke) {
-        Joke lastJoke = jokes.get(jokes.size() - 1);
-        joke.setId(lastJoke.getId() + 1);
-        jokes.add(joke);
-        return joke;
-    }
+//
+//    public Joke addJoke(Joke joke) {
+//        Joke lastJoke = jokes.get(jokes.size() - 1);
+//        joke.setId(lastJoke.getId() + 1);
+//        jokes.add(joke);
+//        return joke;
+//    }
 
     public int numberOfJokes() {
 
@@ -75,43 +74,85 @@ public class Repo {
     }
 
 
-    public double averageRating(int id) {
+        public double averageRating ( int id){
 
-        double result = 0.0;
+            double result = 0.0;
 
-        try (Connection conn = dataSource.getConnection();
-             Statement statement = conn.createStatement();
-             ResultSet rs = statement.executeQuery("SELECT ROUND(AVG(CAST(RatingValue AS DECIMAL)),1) AS New FROM Rating " +
-                     "LEFT JOIN Joke ON joke.id = Rating.jokeId " +
-                     "WHERE jokeID =" + id)) {
-            if (rs.next()) {
-                result = rs.getDouble("New");
+            try (Connection conn = dataSource.getConnection();
+                 Statement statement = conn.createStatement();
+                 ResultSet rs = statement.executeQuery("SELECT ROUND(AVG(CAST(RatingValue AS DECIMAL)),1) AS New FROM Rating " +
+                         "LEFT JOIN Joke ON joke.id = Rating.jokeId " +
+                         "WHERE jokeID =" + id)) {
+                if (rs.next()) {
+                    result = rs.getDouble("New");
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
             }
-        } catch (SQLException e) {
-            e.printStackTrace();
+            return result;
         }
-        return result;
+
+        public void addRating ( int id, int rating){
+            try (Connection conn = dataSource.getConnection();
+                 PreparedStatement ps = conn.prepareStatement("INSERT INTO Rating (JokeId, RatingValue) values (?,?)")) {
+                ps.setInt(1, id);
+                ps.setInt(2, rating);
+                ps.executeUpdate();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+
+
+        private Joke rsJoke (ResultSet rs) throws SQLException {
+            return new Joke(rs.getInt("id"),
+                    rs.getString("title"),
+                    rs.getString("category"),
+                    rs.getString("body"),
+                    rs.getString("author"));
+
+        }
+//
+//    public Joke addJoke(Joke joke) {
+//        Joke lastJoke = jokes.get(jokes.size()-1);
+//        joke.setId(lastJoke.getId()+1);
+//        jokes.add(joke);
+//        return joke;
+//    }
+
+
+        public int addJoke (Joke joke){
+            int generatedId = -1;
+
+            try (Connection conn = dataSource.getConnection();
+                 PreparedStatement ps = conn.prepareStatement("INSERT INTO Joke(TITLE, Category, Body, author ) VALUES (?,?,?,?) ", Statement.RETURN_GENERATED_KEYS)) {
+                ps.setString(1, joke.getTitle());
+                ps.setString(2, joke.getCategory());
+                ps.setString(3, joke.getBody());
+                ps.setString(4, joke.getAuthor());
+                ps.executeUpdate();
+
+
+                //Get the ID of the newly created order row
+                ResultSet rs = ps.getGeneratedKeys();
+                if (rs.next()) {
+                    generatedId = rs.getInt(1);
+                }
+
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+            return generatedId;
+        }
+
+
+//    private Joke rsJoke(ResultSet rs) throws SQLException {
+//        return new Joke(rs.getInt("id"),
+//                rs.getString("title"),
+//                rs.getString("Category"),
+//                rs.getString("Body"),
+//                rs.getString("author");
+//    }
+
+
     }
-
-    public void addRating(int id, int rating) {
-        try (Connection conn = dataSource.getConnection();
-             PreparedStatement ps = conn.prepareStatement("INSERT INTO Rating (JokeId, RatingValue) values (?,?)")){
-             ps.setInt(1, id);
-             ps.setInt(2, rating);
-             ps.executeUpdate();
-    } catch (SQLException e) {
-            e.printStackTrace();
-        }}
-
-
-        private Joke rsBook(ResultSet rs) throws SQLException {
-        return new Joke(rs.getInt("id"),
-                rs.getString("title"),
-                rs.getString("category"),
-                rs.getString("body"),
-                rs.getString("author"));
-
-    }
-
-
-}

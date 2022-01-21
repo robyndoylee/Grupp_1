@@ -55,5 +55,11 @@ class Grupp1ApplicationTests {
         Assertions.assertEquals(2.3, repo.averageRating(1));
     }
 
+    @Test
+    void testaddjoke() {
+//      repo.addJoke(new Joke(null,"NewTitle", "Family", " HEJ HEJ ROLIGT", "Lwam"));
+
+        Assertions.assertEquals(2, repo.addJoke(new Joke(null,"NewTitle1", "Family3", " HEJ HEJ ROLIGT", "Lwam")));
+    }
 }
 

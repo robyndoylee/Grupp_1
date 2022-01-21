@@ -1,17 +1,21 @@
 package com.example.Grupp1;
 
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
 import java.util.ArrayList;
 
+
 public class Joke {
-    private int id;
+    private Integer id;
     private String title;
     private String category;
     private String body;
     private String author;
 
 
-    public Joke(int id, String title, String category, String body, String author) {
+    public Joke(Integer id, String title, String category, String body, String author) {
         this.id=id;
         this.title = title;
         this.category = category;

@@ -1,15 +1,16 @@
 package com.example.Grupp1;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.concurrent.ThreadLocalRandom;
-
+@Service
 public class JokeService {
 
 
     @Autowired
     private Repo repo;
-    private JokeService JokeService;
+
 
     public int randomJoke() {
 // Koppla ihop med SQL. Tidigare kod nedan:
