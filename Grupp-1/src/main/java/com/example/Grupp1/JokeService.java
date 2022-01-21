@@ -13,12 +13,9 @@ public class JokeService {
 
 
     public int randomJoke() {
-// Koppla ihop med SQL. Tidigare kod nedan:
-//        return ThreadLocalRandom.current().nextInt(1,jokes.size()+1);   // Från ID 1 till och med sista elementet i listan
-
-
-return 0;
+        return ThreadLocalRandom.current().nextInt(1,repo.numberOfJokes()+1);
     }
+
 
     public int[] pagArray(int length, int id) {
         int start = Math.max(1, id - 5);
@@ -34,7 +31,7 @@ return 0;
             array[i] = start;
             start++;
         }
-        return array;  // ändra till giltigt return value
+        return array;
     }
 
 

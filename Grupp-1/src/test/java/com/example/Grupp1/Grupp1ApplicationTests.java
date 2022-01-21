@@ -11,6 +11,9 @@ class Grupp1ApplicationTests {
     @Autowired
     private Repo repo;
 
+    @Autowired
+    private JokeService jokeService;
+
     @Test
     void contextLoads() {
     }
@@ -21,6 +24,15 @@ class Grupp1ApplicationTests {
         Joke joke = new Joke(10, "Title", "Family", "Hej hej ", "Lwam");
         Assertions.assertEquals(10, joke.getId());
     }
+
+    @Test
+    void generateRandomIdNumber() {
+        int numberOfJokes = repo.numberOfJokes();
+        Assertions.assertEquals(1, jokeService.randomJoke());
+    }
+
+
+
 
 
     @Test

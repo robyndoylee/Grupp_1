@@ -14,6 +14,7 @@ public class Grupp1Controller {
 
     @Autowired
     private Repo repo;
+
     @Autowired
     private JokeService JokeService;
 
