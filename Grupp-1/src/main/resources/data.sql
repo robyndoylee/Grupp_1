@@ -1,0 +1,10 @@
+INSERT INTO Joke (Title, Category, Body, Author) VALUES ('Test', 'Dark', 'Det här var mörkt', 'Simon');
+INSERT INTO RATING (JokeID, RatingValue) VALUES (1,5);
+INSERT INTO RATING (JokeID, RatingValue) VALUES (1,1);
+
+--INSERT INTO CUSTOMER (FIRST_NAME, LAST_NAME, EMAIL_ADDRESS, PASSWORD) VALUES('Donald', 'Duck', 'donald@disney.com', '123');
+--INSERT INTO CUSTOMER (FIRST_NAME, LAST_NAME, EMAIL_ADDRESS, PASSWORD) VALUES('Daisy', 'Duck', 'daisy@disney.com', 'abc');
+--INSERT INTO CUSTOMER (FIRST_NAME, LAST_NAME, EMAIL_ADDRESS, PASSWORD) VALUES('Scrooge', 'McDuck', 'scrooge@disney.com', '321');
+
+--INSERT INTO PURCHASE (BOOK_ID, CUSTOMER_ID, PURCHASE_DATE) VALUES ((SELECT ID FROM BOOK WHERE AUTHOR = 'Douglas Adams'), (SELECT ID FROM CUSTOMER WHERE FIRST_NAME = 'Donald'), '2019-01-07');
+

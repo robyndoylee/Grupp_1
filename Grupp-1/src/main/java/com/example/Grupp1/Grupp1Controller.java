@@ -14,13 +14,14 @@ public class Grupp1Controller {
 
     @Autowired
     private Repo repo;
+    private JokeService JokeService;
 
     @GetMapping("/")
     String start(HttpSession session, Model model) {
 
         session.getAttribute("admin");
 
-        model.addAttribute("random", repo.randomJoke());
+        model.addAttribute("random", JokeService.randomJoke());
         return "start";
     }
 
@@ -30,14 +31,12 @@ public class Grupp1Controller {
         return "form";
     }
 
-    @PostMapping ("/addRating")
-    String start123 (@RequestParam int rate , @RequestParam int id, Model model){
-        model.addAttribute("rate",rate);
+    @PostMapping("/addRating")
+    String start123(@RequestParam int rate, @RequestParam int id, Model model) {
+        model.addAttribute("rate", rate);
         Joke joke = repo.getJoke(id);
-        joke.addRating(new Rate(rate));
-        System.out.println(rate);
-        System.out.println(joke.averageRating());
-        return "redirect:/view?id=" +id;
+        repo.addRating(rate, id);
+        return "redirect:/view?id=" + id;
     }
 
     @PostMapping("/add")
@@ -68,13 +67,13 @@ public class Grupp1Controller {
 
         int numberOfJokes = repo.numberOfJokes();
         int paginationLength = Math.min(numberOfJokes, 9);
-        int[] paginationElements = pagArray(paginationLength, id);
+        int[] paginationElements = JokeService.pagArray(paginationLength, id);
 
 
         model.addAttribute("joke", joke);
         model.addAttribute("id", id);
-        model.addAttribute("random", repo.randomJoke());
-        model.addAttribute("averageRating", joke.averageRating());
+        model.addAttribute("random", JokeService.randomJoke());
+//        model.addAttribute("averageRating", repo.averageRating());
 
 //        For pagination
         model.addAttribute("showPrevious", id > 1);
@@ -110,25 +109,6 @@ public class Grupp1Controller {
         session.invalidate();
 
         return "redirect:/";
-    }
-
-
-
-    private int[] pagArray(int length, int id) {
-        int start = Math.max(1, id - 5);
-
-        if (repo.numberOfJokes() - id < 5) {    // Lägg inte till länkar om aktiv länk är närmare än 5 ifrån sista ID
-            start = repo.numberOfJokes() - 8;
-        }
-
-        int[] array = new int[length];
-        // aktiv länk/sida skall vara i mitten av pagination (plats 5 av 10)
-
-        for (int i = 0; i < length; i++) {
-            array[i] = start;
-            start++;
-        }
-        return array;
     }
 
 
