@@ -43,7 +43,8 @@ public class Grupp1Controller {
 
     @PostMapping("/add")
     String start1(Model model, @ModelAttribute Joke joke, BindingResult result) {
-        repo.addJoke(joke);
+        int id = repo.addJoke(joke);
+        model.addAttribute("createdId", id);
         model.addAttribute("joke", joke);
         if (joke.getBody() == null || joke.getBody().equals("")) {
             result.rejectValue("body", "body.empty");
@@ -57,8 +58,17 @@ public class Grupp1Controller {
             result.rejectValue("title", "title.empty");
             return "form";
         }
-        return "test2";
+        return "confirmation";
     }
+
+//    @GetMapping("/confirmation")
+//    String confirmation(Model model) {
+//
+//        model.getAttribute("createdId");
+//
+//        return "confirmation";
+//
+//    }
 
     @GetMapping("/view")
     String start4(HttpSession session, Model model, @RequestParam(required = false, defaultValue = "1") int id) {

@@ -68,7 +68,7 @@ class Grupp1ApplicationTests {
     }
 
     @Test
-    void testaddjoke() {
+    void testAddJoke() {
 //      repo.addJoke(new Joke(null,"NewTitle", "Family", " HEJ HEJ ROLIGT", "Lwam"));
         int numOfJokes= repo.numberOfJokes();
         Assertions.assertEquals(numOfJokes+1, repo.addJoke(new Joke("NewTitle1", "Family3", " HEJ HEJ ROLIGT", "Lwam")));

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
@@ -15,7 +15,7 @@
     <div class="col-lg-6 mx-auto">
         <p class="lead mb-4"></p>
         <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
-           <a class="btn btn-primary btn-lg px-4 me-md-2" href="/view?id=">View your joke</a>
+           <a class="btn btn-primary btn-lg px-4 me-md-2" th:href="'/view?id=' + ${createdId}">View your joke</a>
             <a class="btn btn-outline-secondary btn-lg px-4" href="/add">Add another joke</a>
             <a class="btn btn-primary btn-lg px-4 me-md-2" href="/view">View all jokes</a>
 
