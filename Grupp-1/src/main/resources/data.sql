@@ -1,6 +1,8 @@
 INSERT INTO Joke (Title, Category, Body, Author) VALUES ('Test', 'Dark', 'Det här var mörkt', 'Simon');
-INSERT INTO RATING (JokeID, RatingValue) VALUES (1,5);
-INSERT INTO RATING (JokeID, RatingValue) VALUES (1,1);
+INSERT INTO RATING (JokeID, RatingValue) VALUES (1,3);
+INSERT INTO RATING (JokeID, RatingValue) VALUES (1,4);
+
+
 
 --INSERT INTO CUSTOMER (FIRST_NAME, LAST_NAME, EMAIL_ADDRESS, PASSWORD) VALUES('Donald', 'Duck', 'donald@disney.com', '123');
 --INSERT INTO CUSTOMER (FIRST_NAME, LAST_NAME, EMAIL_ADDRESS, PASSWORD) VALUES('Daisy', 'Duck', 'daisy@disney.com', 'abc');

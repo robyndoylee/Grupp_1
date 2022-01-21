@@ -43,8 +43,17 @@ class Grupp1ApplicationTests {
 
     @Test
     void averageRatingForJokeWithId() {
-        Assertions.assertEquals(3, repo.averageRating(1));
+        Assertions.assertEquals(3.5, repo.averageRating(1));
     }
 
+    @Test
+    void addRating(){
+        repo.addRating(1,1);
+        repo.addRating(1,1);
+        repo.addRating(1,2);
+        repo.addRating(1,3);
+        Assertions.assertEquals(2.3, repo.averageRating(1));
+    }
 
 }
+

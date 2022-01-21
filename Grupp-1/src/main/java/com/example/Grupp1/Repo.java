@@ -74,17 +74,18 @@ public class Repo {
         return result;
     }
 
-    public int averageRating(int id) {
 
-        int result = 0;
+    public double averageRating(int id) {
+
+        double result = 0.0;
 
         try (Connection conn = dataSource.getConnection();
              Statement statement = conn.createStatement();
-             ResultSet rs = statement.executeQuery("SELECT AVG(RatingValue) AS AVG FROM Rating " +
-                     "LEFT JOIN Joke ON joke.id = Rating.id " +
+             ResultSet rs = statement.executeQuery("SELECT ROUND(AVG(CAST(RatingValue AS DECIMAL)),1) AS New FROM Rating " +
+                     "LEFT JOIN Joke ON joke.id = Rating.jokeId " +
                      "WHERE jokeID =" + id)) {
             if (rs.next()) {
-                result = rs.getInt("AVG");
+                result = rs.getDouble("New");
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -92,12 +93,18 @@ public class Repo {
         return result;
     }
 
-
     public void addRating(int id, int rating) {
+        try (Connection conn = dataSource.getConnection();
+             PreparedStatement ps = conn.prepareStatement("INSERT INTO Rating (JokeId, RatingValue) values (?,?)")){
+             ps.setInt(1, id);
+             ps.setInt(2, rating);
+             ps.executeUpdate();
+    } catch (SQLException e) {
+            e.printStackTrace();
+        }}
 
-    }
 
-    private Joke rsBook(ResultSet rs) throws SQLException {
+        private Joke rsBook(ResultSet rs) throws SQLException {
         return new Joke(rs.getInt("id"),
                 rs.getString("title"),
                 rs.getString("category"),
