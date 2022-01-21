@@ -92,7 +92,7 @@ public class Repo {
             return result;
         }
 
-        public void addRating ( int id, int rating){
+        public void addRating (int id, int rating){
             try (Connection conn = dataSource.getConnection();
                  PreparedStatement ps = conn.prepareStatement("INSERT INTO Rating (JokeId, RatingValue) values (?,?)")) {
                 ps.setInt(1, id);
@@ -105,6 +105,16 @@ public class Repo {
             }
         }
 
+        public void editJokeBody(int id, String body) {
+            try (Connection conn = dataSource.getConnection();
+                 PreparedStatement ps = conn.prepareStatement("UPDATE Jokes SET Body = ?")) {
+                ps.setString(1, body);
+                ps.executeUpdate();
+                System.out.println(body);
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
 
         private Joke rsJoke (ResultSet rs) throws SQLException {
             return new Joke(rs.getInt("id"),

@@ -27,6 +27,17 @@ public class Grupp1Controller {
         return "start";
     }
 
+    @GetMapping("/add/{viewId}")
+    String start3(HttpSession session, Model model, @PathVariable (required = false) int viewId) {
+        if (session.getAttribute("admin").equals(true)) {
+            Joke joke = repo.getJoke(viewId);
+            model.addAttribute("joke", joke);
+        } else {
+            model.addAttribute("joke", new Joke());
+        }
+        return "form";
+    }
+
     @GetMapping("/add")
     String start3(HttpSession session, Model model) {
         model.addAttribute("joke", new Joke());
@@ -40,6 +51,7 @@ public class Grupp1Controller {
         repo.addRating(id, rate);
         return "redirect:/view?id=" + id;
     }
+
 
     @PostMapping("/add")
     String start1(Model model, @ModelAttribute Joke joke, BindingResult result) {

@@ -114,7 +114,7 @@
             <div class="d-grid gap-2 d-md-flex justify-content-md-start">
                 <a class="btn btn-primary btn-lg px-4 me-md-2" th:href="'/view?id=' + ${random}">Random Joke</a>
                 <a class="btn btn-outline-secondary btn-lg px-4" href="/add">Add joke</a>
-                <a th:if="${session.admin}"  class="btn btn-outline-secondary btn-lg px-4" href="/add">Edit joke</a>
+                <a th:if="${session.admin}"  class="btn btn-outline-secondary btn-lg px-4" th:href="'/add/' + ${id}">Edit joke</a>
             </div>
         </div>
     </div>
